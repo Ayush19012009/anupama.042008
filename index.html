@@ -7,11 +7,12 @@
   
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
 
   <style>
     :root {
+      /* Soft Romantic Pastel Palette */
       --bg-canvas: #fdf5f7;
       --card-bg: #ffffff;
       --card-border: #f7ccd8;
@@ -307,20 +308,15 @@
       margin-top: 0.3rem;
     }
 
+    /* Main Body Container */
     .main-body-container {
       width: 100%;
       text-align: left;
       margin: 0 0 2.2rem;
       padding: 0 0.4rem;
     }
-    .floating-paragraph {
-      font-size: 1.02rem;
-      font-weight: 600;
-      color: var(--text-main);
-      line-height: 1.95;
-      margin-bottom: 1.2rem;
-    }
 
+    /* Interactive Boxes */
     .interactive-section {
       width: 100%;
       display: flex;
@@ -448,31 +444,11 @@
       color: #3b5066;
     }
 
+    /* Floating Ending Lines Container */
     .floating-ending-lines {
       width: 100%;
       text-align: center;
-      margin: 2rem 0 1.5rem;
-    }
-    .ending-line-3rd {
-      font-family: var(--font-body);
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-main);
-      margin-bottom: 0.6rem;
-    }
-    .ending-line-2nd {
-      font-family: var(--font-script);
-      font-size: 1.65rem;
-      font-weight: 700;
-      color: var(--primary-rose);
-      margin-bottom: 0.6rem;
-    }
-    .ending-line-last {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--deep-rose);
-      margin-bottom: 1.5rem;
+      margin: 1.5rem 0 1rem;
     }
 
     .ring-section {
@@ -530,6 +506,7 @@
       text-align: center;
     }
 
+    /* Modals */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -549,10 +526,12 @@
     }
     .modal-card {
       background: white;
-      padding: 2rem 1.8rem;
+      padding: 2rem 1.6rem;
       border-radius: 24px;
-      max-width: 480px;
+      max-width: 490px;
       width: 100%;
+      max-height: 88vh;
+      overflow-y: auto;
       text-align: center;
       box-shadow: 0 12px 35px rgba(0,0,0,0.14);
       animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -563,11 +542,12 @@
     }
     .section-img {
       width: 100%;
-      max-height: 280px;
-      object-fit: cover;
+      max-height: 320px;
+      object-fit: contain;
       border-radius: 14px;
       margin: 1.2rem 0;
       box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      background: #faf6f8;
     }
     .gift-box-wrap {
       margin: 1.5rem 0;
@@ -628,7 +608,7 @@ Meet you again in the last !! And do read everything, as every single word is wr
   <!-- SCREEN 4: MAIN CORNER -->
   <div class="screen main-page" id="screen-main">
     
-    <!-- 1. Header -->
+    <!-- Header -->
     <div class="main-top-header">
       <div class="subtle-label">A TINY CORNER OF MEMORIES</div>
       <div class="main-title">For you ♡</div>
@@ -637,7 +617,7 @@ Meet you again in the last !! And do read everything, as every single word is wr
       </p>
     </div>
 
-    <!-- 2. Timer Countdown Box -->
+    <!-- Timer Countdown Box -->
     <div class="timer-countdown-box">
       <div class="timer-title">Time since I fell in love with you 🙊</div>
       <div class="timer-grid">
@@ -656,15 +636,12 @@ Meet you again in the last !! And do read everything, as every single word is wr
       </div>
     </div>
 
-    <!-- 3. Main Body Floating Text -->
-    <div class="main-body-container">
-      <p class="cursive-line">Some feelings take time to find their words...</p>
-      <p class="floating-paragraph">
-        Every single day since then has carried a little bit of your warmth. This space is made purely to hold memories and little pieces of thoughts that belong only to us.
-      </p>
+    <!-- Main Body Floating Text Container -->
+    <div class="main-body-container" id="main-body-text">
+      <!-- Reserved for your main floating text -->
     </div>
 
-    <!-- 4. Interactive Boxes -->
+    <!-- Interactive Boxes -->
     <div class="interactive-section">
       <div class="iimun-row">
         <div class="iimun-box" onclick="promptSection('iimun2025')">
@@ -686,14 +663,12 @@ Meet you again in the last !! And do read everything, as every single word is wr
       </div>
     </div>
 
-    <!-- 5. Natural Floating Lines -->
-    <div class="floating-ending-lines">
-      <p class="ending-line-3rd">Thank you for being the sweetest part of my days.</p>
-      <p class="ending-line-2nd">Every moment with you is my favourite memory...</p>
-      <p class="ending-line-last">And there's just one more little surprise for you ♡</p>
+    <!-- Natural Floating Ending Lines Container -->
+    <div class="floating-ending-lines" id="ending-lines">
+      <!-- Reserved for your ending lines -->
     </div>
 
-    <!-- 6. Ring Box Ending -->
+    <!-- Ring Box Ending -->
     <div class="ring-section">
       <div class="ring-box-container" id="ring-box" onclick="toggleRingBox()">
         <span style="font-size: 1.5rem;">♡</span>
@@ -746,7 +721,7 @@ Meet you again in the last !! And do read everything, as every single word is wr
       </div>
 
       <img id="content-img" class="section-img" src="" alt="Memory" style="display:none;" />
-      <p id="content-body" style="font-size: 1rem; font-weight: 600; line-height: 1.85; color: #523b44; margin-top: 1rem; white-space: pre-line;"></p>
+      <div id="content-body" style="font-size: 1rem; font-weight: 600; line-height: 1.9; color: #523b44; margin-top: 1rem; white-space: pre-line;"></div>
       
       <div style="text-align: center; margin-top: 1.6rem;">
         <button class="btn-cute" onclick="closeModals()">Close ♡</button>
@@ -847,10 +822,29 @@ Meet you again in the last !! And do read everything, as every single word is wr
 
     let currentTarget = null;
     const sectionData = {
-      iimun2025: { title: "IIMUN 2025", text: "Ready for your exact story text.", img: "section1.jpg", hasGift: false },
-      iimun2026: { title: "IIMUN 2026", text: "Ready for your exact story text.", img: "section2.jpg", hasGift: false },
-      whylove: { title: "WHY I LOVE YOU", text: "Ready for your exact story text.", img: "section3.jpg", hasGift: false },
-      neverread: { title: "THINGS YOU MUST NEVER READ", text: "Ready for your exact story text.", img: "section4.jpg", hasGift: true }
+      iimun2025: { 
+        title: "IIMUN 2025", 
+        text: `How can I even forget this date - 17 July 2025, the date, I'll always be grateful to! The date , when the universe really thought to show me that fairies do exist in real life too!!
+
+I still remember the day , that afternoon when I saw you for the very first time wearing the yellow shiny kurti and red dupatta 🛌🏻! I never got the opportunity to tell you but that was the first time in 16 years , I literally fell for someone ,at first sight 🛐
+
+The way you asked us to answer questions to the chief guest, busyy being in a WhatsApp group call, sitting just in front of us & literally being the most tensed OC member. I literally wanted to talk to you that day but couldn't, so thought that I'ld surely talk the next day but I never got the confidence to match this unmatchable aura of someone!!
+
+I almost lost the hope that I would ever say you a HI , but I too don't know how in the last day i gathered some courage just to ask you to take a pictuee with me ( I too know that it was so random😹), maybe so that I could have adored that for the rest of my life because somehow my heart knew that it might be the first and the last time, we meeting together. I was literally the happiest after getting that photograph and literally thought of that only moment my whole way to home.
+
+Tbh , I literally lost all the hopes of meeting you again , was lil bit sad and never thought that would talk to you again ! 
+
+"But kehte hai na , agar tum kisi chizz ko puri shiddat se chaho , toh pure duniya usse tumse milane ki koshish mein jut jaati h"
+
+And Aditya did the same , idk what he told you , till date also idk what he even said but whatever he said , I'll be grateful to him somehow that we got to know eachother and that random Hi and photograph , now turned into this immortal bond mannnn!!!
+
+I'll always be grateful to IIMUN and that specific date to the universe.`, 
+        img: "file_00000003cf082119588b144f90309b0.png", 
+        hasGift: false 
+      },
+      iimun2026: { title: "IIMUN 2026", text: "", img: "", hasGift: false },
+      whylove: { title: "WHY I LOVE YOU", text: "", img: "", hasGift: false },
+      neverread: { title: "THINGS YOU MUST NEVER READ", text: "", img: "", hasGift: true }
     };
 
     function promptSection(key) {
@@ -877,14 +871,18 @@ Meet you again in the last !! And do read everything, as every single word is wr
       const img = document.getElementById('content-img');
       const gift = document.getElementById('gift-box-container');
       
-      if (data.hasGift) {
-        gift.style.display = 'block';
-        img.style.display = 'none';
+      if (data.img && data.img !== "") {
         img.src = data.img;
+        if (data.hasGift) {
+          gift.style.display = 'block';
+          img.style.display = 'none';
+        } else {
+          gift.style.display = 'none';
+          img.style.display = 'block';
+        }
       } else {
         gift.style.display = 'none';
-        img.src = data.img;
-        img.style.display = 'block';
+        img.style.display = 'none';
       }
       
       document.getElementById('content-modal').classList.add('active');
