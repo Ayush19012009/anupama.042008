@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>A Tiny Corner of Memories ♡</title>
   
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Nunito:wght@400;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
@@ -54,7 +53,7 @@
       line-height: 1.7;
     }
 
-    /* Falling Tulips & Sunflowers */
+    /* Tulips & Sunflowers */
     .flower-container {
       position: fixed;
       top: 0;
@@ -77,7 +76,7 @@
       100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
     }
 
-    /* Screens Management */
+    /* Screen Management */
     .screen {
       display: none;
       width: 100%;
@@ -86,14 +85,9 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
     }
     .screen.active {
       display: flex;
-      opacity: 1;
-      transform: translateY(0);
     }
 
     h1, h2, h3 {
@@ -131,76 +125,36 @@
       font-weight: 700;
       cursor: pointer;
       box-shadow: 0 4px 14px rgba(163, 72, 99, 0.1);
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       margin: 0.5rem;
-    }
-    .btn-cute:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(163, 72, 99, 0.2);
-      background: #fffbfe;
-      border-color: var(--primary-rose);
     }
     .btn-green {
       background: #6a9b73;
       color: white;
       border: none;
     }
-    .btn-green:hover {
-      background: #5b8763;
-      color: white;
-      box-shadow: 0 6px 18px rgba(106, 155, 115, 0.3);
-    }
 
-    /* SCREEN 1: Smooth Mobile-Proof Password */
+    /* Clean lag-free password */
     .pass-heart {
       font-size: 2.2rem;
       color: var(--primary-rose);
-      animation: pulse 1.6s infinite ease-in-out;
       margin: 0.5rem 0 1rem;
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-    }
-    
-    .otp-container {
-      position: relative;
-      margin: 1.5rem 0;
-      cursor: pointer;
-    }
-    .otp-real-input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      cursor: pointer;
-      font-size: 1px;
-    }
-    .otp-display-wrapper {
-      display: flex;
-      gap: 12px;
-      pointer-events: none;
-    }
-    .otp-box {
-      width: 48px;
-      height: 56px;
+    .pass-input {
+      width: 160px;
+      height: 52px;
       border: 2px solid var(--card-border);
-      border-radius: 14px;
+      border-radius: 16px;
       background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
+      text-align: center;
+      font-size: 1.5rem;
       font-weight: 700;
       color: var(--deep-rose);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
-      transition: all 0.2s ease;
+      letter-spacing: 8px;
+      outline: none;
+      margin: 1.2rem 0 0.8rem;
     }
-    .otp-box.active {
+    .pass-input:focus {
       border-color: var(--primary-rose);
-      box-shadow: 0 0 10px rgba(163, 72, 99, 0.25);
     }
 
     .error-toast {
@@ -214,18 +168,11 @@
       font-size: 0.92rem;
       font-weight: 600;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
-      opacity: 0;
-      transform: translateY(20px);
-      pointer-events: none;
-      transition: all 0.3s ease;
+      display: none;
       z-index: 200;
     }
-    .error-toast.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
 
-    /* SCREEN 2: Welcome Gate */
+    /* Screen 2: Welcome */
     .welcome-title {
       font-size: 2rem;
       line-height: 1.3;
@@ -239,7 +186,7 @@
       margin-bottom: 2.2rem;
     }
 
-    /* SCREEN 3: Intro Letter */
+    /* Screen 3: Letter */
     .letter-text {
       text-align: left;
       font-size: 1rem;
@@ -252,17 +199,12 @@
       border: 1px solid #fce3ec;
       padding: 1.6rem;
       border-radius: 20px;
-      box-shadow: 0 6px 20px rgba(163, 72, 99, 0.04);
     }
 
-    /* SCREEN 4: MAIN PAGE */
+    /* SCREEN 4: Main */
     .main-page {
       max-width: 580px;
       padding: 2rem 1.2rem 4rem;
-    }
-
-    .main-top-header {
-      margin-bottom: 1.5rem;
     }
     .main-title {
       font-family: var(--font-serif);
@@ -276,8 +218,7 @@
       font-weight: 600;
       color: var(--text-muted);
       max-width: 440px;
-      margin: 0 auto;
-      line-height: 1.5;
+      margin: 0 auto 1.5rem;
     }
 
     .timer-countdown-box {
@@ -285,7 +226,7 @@
       border: 1.5px solid var(--card-border);
       border-radius: 22px;
       padding: 1.3rem 1.5rem;
-      margin: 1.2rem 0 2rem;
+      margin: 0 0 2rem;
       width: 100%;
       box-shadow: 0 6px 20px rgba(163, 72, 99, 0.08);
     }
@@ -301,11 +242,6 @@
       margin-top: 0.9rem;
       padding-top: 0.8rem;
       border-top: 1px dashed var(--card-border);
-    }
-    .timer-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
     }
     .timer-num {
       font-family: var(--font-serif);
@@ -323,13 +259,6 @@
       margin-top: 0.3rem;
     }
 
-    .main-body-container {
-      width: 100%;
-      text-align: left;
-      margin: 0 0 2.2rem;
-      padding: 0 0.4rem;
-    }
-
     .interactive-section {
       width: 100%;
       display: flex;
@@ -338,7 +267,6 @@
       gap: 1.4rem;
       margin: 1rem 0 2.5rem;
     }
-
     .iimun-row {
       display: flex;
       width: 100%;
@@ -352,23 +280,15 @@
       padding: 1.4rem 1rem;
       border-radius: 18px;
       cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 15px rgba(163, 72, 99, 0.05);
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .iimun-box:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 22px rgba(163, 72, 99, 0.16);
-      border-color: var(--primary-rose);
-      background: #fffafd;
+      box-shadow: 0 4px 15px rgba(163, 72, 99, 0.05);
     }
     .iimun-box span {
       font-family: var(--font-serif);
       font-size: 1.22rem;
       font-weight: 700;
-      letter-spacing: 0.5px;
       color: var(--deep-rose);
     }
 
@@ -387,7 +307,6 @@
       border: none;
       cursor: pointer;
       transform: rotate(-45deg);
-      transition: all 0.25s ease;
     }
     .heart-box-btn::before,
     .heart-box-btn::after {
@@ -420,14 +339,6 @@
       text-align: center;
       line-height: 1.2;
     }
-    .heart-box-btn:hover {
-      transform: rotate(-45deg) scale(1.06);
-      background: #f7cfdd;
-    }
-    .heart-box-btn:hover::before,
-    .heart-box-btn:hover::after {
-      background: #f7cfdd;
-    }
 
     .never-read-box {
       width: 100%;
@@ -437,29 +348,15 @@
       padding: 1.2rem 1.4rem;
       border-radius: 18px;
       cursor: pointer;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 15px rgba(205, 223, 240, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-    }
-    .never-read-box:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 22px rgba(163, 72, 99, 0.14);
-      border-color: var(--primary-rose);
     }
     .never-read-box span {
       font-family: var(--font-serif);
       font-size: 1.15rem;
       font-weight: 700;
-      letter-spacing: 0.5px;
       color: #3b5066;
-    }
-
-    .floating-ending-lines {
-      width: 100%;
-      text-align: center;
-      margin: 1.5rem 0 1rem;
     }
 
     .ring-section {
@@ -480,24 +377,10 @@
       justify-content: center;
       cursor: pointer;
       color: #fff;
-      box-shadow: 0 8px 24px rgba(84, 18, 36, 0.25);
-      transition: all 0.35s ease;
-    }
-    .ring-box-container:hover {
-      transform: scale(1.05);
-    }
-    .ring-box-container.opened {
-      background: #7a1f39;
-      height: 130px;
     }
     .ring-reveal-content {
       display: none;
       margin-top: 1.5rem;
-      animation: fadeIn 0.8s ease forwards;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(8px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
     .final-love-txt {
       font-family: var(--font-serif);
@@ -524,7 +407,6 @@
       width: 100vw;
       height: 100vh;
       background: rgba(45, 36, 39, 0.45);
-      backdrop-filter: blur(4px);
       display: none;
       align-items: center;
       justify-content: center;
@@ -543,12 +425,6 @@
       max-height: 88vh;
       overflow-y: auto;
       text-align: center;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.14);
-      animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    @keyframes modalPop {
-      0% { transform: scale(0.92); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
     }
     .section-img {
       width: 100%;
@@ -556,20 +432,8 @@
       object-fit: contain;
       border-radius: 14px;
       margin: 1.2rem 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
       background: #faf6f8;
       display: block;
-    }
-    .gift-box-wrap {
-      margin: 1.5rem 0;
-      cursor: pointer;
-    }
-    .gift-box {
-      font-size: 3.2rem;
-      transition: transform 0.3s;
-    }
-    .gift-box:hover {
-      transform: scale(1.15) rotate(5deg);
     }
   </style>
 </head>
@@ -587,22 +451,16 @@
     <div class="pass-heart">♡</div>
     <p style="font-size: 0.95rem; font-weight: 600; color: var(--text-muted);">Enter 4-digit code</p>
     
-    <div class="otp-container" onclick="focusOtp()">
-      <input type="password" id="otp-master" class="otp-real-input" maxlength="4" inputmode="numeric" autofocus autocomplete="off" />
-      <div class="otp-display-wrapper">
-        <div class="otp-box active" id="box-0"></div>
-        <div class="otp-box" id="box-1"></div>
-        <div class="otp-box" id="box-2"></div>
-        <div class="otp-box" id="box-3"></div>
-      </div>
-    </div>
+    <input type="password" id="pass-input" class="pass-input" maxlength="4" placeholder="••••" inputmode="numeric" />
+    <br/>
+    <button class="btn-cute" onclick="validatePassword()">Unlock ♡</button>
   </div>
 
   <!-- SCREEN 2: WELCOME GATE -->
   <div class="screen" id="screen-welcome">
     <h1 class="welcome-title">Welcome to Anupama's small world</h1>
     <div class="author-credit">~Made by Ayushman</div>
-    <button class="btn-cute btn-green" id="btn-to-intro">Enter</button>
+    <button class="btn-cute btn-green" onclick="showScreen('screen-intro')">Enter</button>
   </div>
 
   <!-- SCREEN 3: INTRO LETTER -->
@@ -614,22 +472,18 @@ Ig Something should be left for the next time too na 😛! But this is the only 
 Meet you again in the last !! And do read everything, as every single word is written by me myself expressing my purest feelings without any filter 🤭❤️!</div>
 
     <div>
-      <button class="btn-cute" id="btn-intro-okay">Okayy</button>
-      <button class="btn-cute" id="btn-intro-no">Ohh Noo</button>
+      <button class="btn-cute" onclick="showScreen('screen-main')">Okayy</button>
+      <button class="btn-cute" onclick="openNoModal()">Ohh Noo</button>
     </div>
   </div>
 
   <!-- SCREEN 4: MAIN CORNER -->
   <div class="screen main-page" id="screen-main">
-    
-    <!-- Header -->
-    <div class="main-top-header">
-      <div class="subtle-label">A TINY CORNER OF MEMORIES</div>
-      <div class="main-title">For you ♡</div>
-      <p class="main-subtitle">
-        Don't rush. There are only a few little things here... and they're meant to be discovered, not announced.
-      </p>
-    </div>
+    <div class="subtle-label">A TINY CORNER OF MEMORIES</div>
+    <div class="main-title">For you ♡</div>
+    <p class="main-subtitle">
+      Don't rush. There are only a few little things here... and they're meant to be discovered, not announced.
+    </p>
 
     <!-- Timer Countdown Box -->
     <div class="timer-countdown-box">
@@ -649,9 +503,6 @@ Meet you again in the last !! And do read everything, as every single word is wr
         </div>
       </div>
     </div>
-
-    <!-- Main Body Container -->
-    <div class="main-body-container" id="main-body-text"></div>
 
     <!-- Interactive Boxes -->
     <div class="interactive-section">
@@ -675,12 +526,9 @@ Meet you again in the last !! And do read everything, as every single word is wr
       </div>
     </div>
 
-    <!-- Floating Ending Lines Container -->
-    <div class="floating-ending-lines" id="ending-lines"></div>
-
     <!-- Ring Box Ending -->
     <div class="ring-section">
-      <div class="ring-box-container" id="ring-box" onclick="toggleRingBox()">
+      <div class="ring-box-container" onclick="toggleRingBox()">
         <span style="font-size: 1.5rem;">♡</span>
         <span style="font-size: 0.85rem; font-weight: 700; letter-spacing: 1.5px; margin-top: 4px;">OPEN</span>
       </div>
@@ -691,7 +539,6 @@ Meet you again in the last !! And do read everything, as every single word is wr
       </div>
     </div>
 
-    <!-- Exact Master Footer -->
     <footer>
       Made with maximum efforts , because at the end efforts do matter
     </footer>
@@ -703,7 +550,7 @@ Meet you again in the last !! And do read everything, as every single word is wr
       <h2 id="confirm-title" style="margin-bottom: 0.8rem; font-size: 1.35rem;">Are you sure?</h2>
       <p id="confirm-sub" style="font-size: 0.95rem; font-weight: 600; color: var(--text-muted); margin-bottom: 1.3rem;"></p>
       <div>
-        <button class="btn-cute btn-green" id="confirm-yes">Yes</button>
+        <button class="btn-cute btn-green" onclick="openContentModal()">Yes</button>
         <button class="btn-cute" onclick="closeModals()">No</button>
       </div>
     </div>
@@ -721,4 +568,161 @@ Meet you again in the last !! And do read everything, as every single word is wr
 
   <div class="modal-overlay" id="content-modal">
     <div class="modal-card" style="text-align: left;">
-      <h2 id="content-title" style="text-align: center; margi
+      <h2 id="content-title" style="text-align: center; margin-bottom: 0.8rem; font-size: 1.4rem;"></h2>
+      
+      <img id="content-img" class="section-img" src="" alt="Memory" />
+      <div id="content-body" style="font-size: 1rem; font-weight: 600; line-height: 1.9; color: #523b44; margin-top: 1rem; white-space: pre-line;"></div>
+      
+      <div style="text-align: center; margin-top: 1.6rem;">
+        <button class="btn-cute" onclick="closeModals()">Close ♡</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* Flower Petals */
+    function spawnFlower() {
+      const zone = document.getElementById('flower-zone');
+      const flowers = ['🌷', '🌻'];
+      const el = document.createElement('div');
+      el.className = 'flower';
+      el.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      zone.appendChild(el);
+      setTimeout(() => el.remove(), 7000);
+    }
+    setInterval(spawnFlower, 1400);
+
+    /* Screen Control */
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    /* Password Validation */
+    const passInput = document.getElementById('pass-input');
+    passInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        validatePassword();
+      }
+    });
+
+    function validatePassword() {
+      const val = passInput.value.trim();
+      if (val === "2008") {
+        showScreen('screen-welcome');
+      } else {
+        const toast = document.getElementById('error-toast');
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 3000);
+        passInput.value = "";
+      }
+    }
+
+    function openNoModal() {
+      document.getElementById('no-modal').classList.add('active');
+    }
+
+    function resetToStart() {
+      closeModals();
+      passInput.value = "";
+      showScreen('screen-pass');
+    }
+
+    /* Timer */
+    function updateCounter() {
+      const startDate = new Date('2025-07-17T00:00:00');
+      const now = new Date();
+      
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+
+      if (days < 0) {
+        months--;
+        const prevMonthDays = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+        days += prevMonthDays;
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      document.getElementById('cnt-years').innerText = Math.max(0, years);
+      document.getElementById('cnt-months').innerText = Math.max(0, months);
+      document.getElementById('cnt-days').innerText = Math.max(0, days);
+    }
+    updateCounter();
+
+    let currentTarget = null;
+    const sectionData = {
+      iimun2025: { 
+        title: "IIMUN 2025", 
+        text: `How can I even forget this date - 17 July 2025, the date, I'll always be grateful to! The date , when the universe really thought to show me that fairies do exist in real life too!!
+
+I still remember the day , that afternoon when I saw you for the very first time wearing the yellow shiny kurti and red dupatta 🛌🏻! I never got the opportunity to tell you but that was the first time in 16 years , I literally fell for someone ,at first sight 🛐
+
+The way you asked us to answer questions to the chief guest, busyy being in a WhatsApp group call, sitting just in front of us & literally being the most tensed OC member. I literally wanted to talk to you that day but couldn't, so thought that I'ld surely talk the next day but I never got the confidence to match this unmatchable aura of someone!!
+
+I almost lost the hope that I would ever say you a HI , but I too don't know how in the last day i gathered some courage just to ask you to take a pictuee with me ( I too know that it was so random😹), maybe so that I could have adored that for the rest of my life because somehow my heart knew that it might be the first and the last time, we meeting together. I was literally the happiest after getting that photograph and literally thought of that only moment my whole way to home.
+
+Tbh , I literally lost all the hopes of meeting you again , was lil bit sad and never thought that would talk to you again ! 
+
+"But kehte hai na , agar tum kisi chizz ko puri shiddat se chaho , toh pure duniya usse tumse milane ki koshish mein jut jaati h"
+
+And Aditya did the same , idk what he told you , till date also idk what he even said but whatever he said , I'll be grateful to him somehow that we got to know eachother and that random Hi and photograph , now turned into this immortal bond mannnn!!!
+
+I'll always be grateful to IIMUN and that specific date to the universe.`, 
+        img: "section1.jpg"
+      },
+      iimun2026: { title: "IIMUN 2026", text: "", img: "" },
+      whylove: { title: "WHY I LOVE YOU", text: "", img: "" },
+      neverread: { title: "THINGS YOU MUST NEVER READ", text: "", img: "" }
+    };
+
+    function promptSection(key) {
+      currentTarget = key;
+      const titleEl = document.getElementById('confirm-title');
+      const subEl = document.getElementById('confirm-sub');
+
+      if (key === 'neverread') {
+        titleEl.innerText = "Are you sure you want to read 🙉";
+        subEl.innerText = "Read at your own risk 😝";
+      } else {
+        titleEl.innerText = "Are you sure?";
+        subEl.innerText = "";
+      }
+      document.getElementById('confirm-modal').classList.add('active');
+    }
+
+    function openContentModal() {
+      closeModals();
+      const data = sectionData[currentTarget];
+      document.getElementById('content-title').innerText = data.title;
+      document.getElementById('content-body').innerText = data.text;
+      
+      const img = document.getElementById('content-img');
+      if (data.img && data.img !== "") {
+        img.src = data.img;
+        img.style.display = 'block';
+      } else {
+        img.style.display = 'none';
+      }
+      
+      document.getElementById('content-modal').classList.add('active');
+    }
+
+    function closeModals() {
+      document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+    }
+
+    function toggleRingBox() {
+      const reveal = document.getElementById('ring-reveal');
+      reveal.style.display = (reveal.style.display === 'block') ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
+
