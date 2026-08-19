@@ -53,7 +53,7 @@
       line-height: 1.7;
     }
 
-    /* Tulips & Sunflowers */
+    /* Falling Tulips & Sunflowers */
     .flower-container {
       position: fixed;
       top: 0;
@@ -76,7 +76,7 @@
       100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
     }
 
-    /* Screen Management */
+    /* Screen Transitions */
     .screen {
       display: none;
       width: 100%;
@@ -85,9 +85,14 @@
       flex-direction: column;
       align-items: center;
       text-align: center;
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .screen.active {
       display: flex;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     h1, h2, h3 {
@@ -115,35 +120,60 @@
       color: var(--text-light);
     }
 
+    /* Tactile Smooth Buttons */
     .btn-cute {
       background: white;
       border: 1.5px solid var(--card-border);
       color: var(--primary-rose);
-      padding: 0.7rem 1.8rem;
+      padding: 0.75rem 1.9rem;
       border-radius: 25px;
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(163, 72, 99, 0.1);
+      box-shadow: 0 4px 14px rgba(163, 72, 99, 0.08);
       margin: 0.5rem;
+      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .btn-cute:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(163, 72, 99, 0.18);
+      border-color: var(--primary-rose);
+      background: #fffbfe;
+    }
+    .btn-cute:active {
+      transform: scale(0.94);
+      box-shadow: 0 2px 8px rgba(163, 72, 99, 0.12);
     }
     .btn-green {
       background: #6a9b73;
       color: white;
       border: none;
     }
+    .btn-green:hover {
+      background: #5b8763;
+      color: white;
+      box-shadow: 0 8px 20px rgba(106, 155, 115, 0.3);
+    }
 
-    /* Clean lag-free password */
+    /* Password Screen Animations */
     .pass-heart {
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       color: var(--primary-rose);
       margin: 0.5rem 0 1rem;
+      animation: heartbeat 1.8s infinite ease-in-out;
+    }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      14% { transform: scale(1.15); }
+      28% { transform: scale(1); }
+      42% { transform: scale(1.1); }
+      70% { transform: scale(1); }
     }
     .pass-input {
-      width: 160px;
-      height: 52px;
+      width: 170px;
+      height: 54px;
       border: 2px solid var(--card-border);
-      border-radius: 16px;
+      border-radius: 18px;
       background: white;
       text-align: center;
       font-size: 1.5rem;
@@ -152,9 +182,13 @@
       letter-spacing: 8px;
       outline: none;
       margin: 1.2rem 0 0.8rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     }
     .pass-input:focus {
       border-color: var(--primary-rose);
+      box-shadow: 0 0 16px rgba(163, 72, 99, 0.22);
+      transform: scale(1.02);
     }
 
     .error-toast {
@@ -163,16 +197,21 @@
       background: #ffffff;
       border: 1.5px solid var(--card-border);
       color: var(--deep-rose);
-      padding: 0.85rem 1.5rem;
+      padding: 0.9rem 1.6rem;
       border-radius: 25px;
       font-size: 0.92rem;
       font-weight: 600;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
       display: none;
       z-index: 200;
+      animation: toastPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    @keyframes toastPop {
+      0% { opacity: 0; transform: translateY(20px) scale(0.9); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* Screen 2: Welcome */
+    /* Screen 2 & 3 Content Boxes */
     .welcome-title {
       font-size: 2rem;
       line-height: 1.3;
@@ -180,13 +219,11 @@
     }
     .author-credit {
       font-family: var(--font-script);
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 600;
       color: var(--text-muted);
       margin-bottom: 2.2rem;
     }
-
-    /* Screen 3: Letter */
     .letter-text {
       text-align: left;
       font-size: 1rem;
@@ -195,13 +232,15 @@
       margin-bottom: 1.8rem;
       white-space: pre-line;
       line-height: 1.85;
-      background: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.75);
       border: 1px solid #fce3ec;
-      padding: 1.6rem;
-      border-radius: 20px;
+      padding: 1.8rem;
+      border-radius: 22px;
+      box-shadow: 0 6px 22px rgba(163, 72, 99, 0.04);
+      backdrop-filter: blur(4px);
     }
 
-    /* SCREEN 4: Main */
+    /* SCREEN 4: Main Page Layout */
     .main-page {
       max-width: 580px;
       padding: 2rem 1.2rem 4rem;
@@ -225,14 +264,18 @@
       background: white;
       border: 1.5px solid var(--card-border);
       border-radius: 22px;
-      padding: 1.3rem 1.5rem;
+      padding: 1.4rem 1.5rem;
       margin: 0 0 2rem;
       width: 100%;
-      box-shadow: 0 6px 20px rgba(163, 72, 99, 0.08);
+      box-shadow: 0 6px 22px rgba(163, 72, 99, 0.08);
+      transition: transform 0.3s ease;
+    }
+    .timer-countdown-box:hover {
+      transform: translateY(-2px);
     }
     .timer-title {
       font-family: var(--font-display);
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       font-weight: 700;
       color: var(--deep-rose);
     }
@@ -259,6 +302,7 @@
       margin-top: 0.3rem;
     }
 
+    /* Interactive Boxes */
     .interactive-section {
       width: 100%;
       display: flex;
@@ -278,12 +322,22 @@
       background: white;
       border: 1.5px solid var(--card-border);
       padding: 1.4rem 1rem;
-      border-radius: 18px;
+      border-radius: 20px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 15px rgba(163, 72, 99, 0.05);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .iimun-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(163, 72, 99, 0.16);
+      border-color: var(--primary-rose);
+      background: #fffafd;
+    }
+    .iimun-box:active {
+      transform: scale(0.96);
     }
     .iimun-box span {
       font-family: var(--font-serif);
@@ -300,30 +354,33 @@
       width: 100%;
     }
     .heart-box-btn {
-      width: 116px;
-      height: 105px;
+      width: 118px;
+      height: 106px;
       position: relative;
       background: var(--soft-blush);
       border: none;
       cursor: pointer;
       transform: rotate(-45deg);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 6px 18px rgba(163, 72, 99, 0.12);
     }
     .heart-box-btn::before,
     .heart-box-btn::after {
       content: "";
-      width: 116px;
-      height: 105px;
+      width: 118px;
+      height: 106px;
       position: absolute;
       border-radius: 50%;
       background: var(--soft-blush);
+      transition: background 0.3s;
     }
     .heart-box-btn::before {
-      top: -55px;
+      top: -56px;
       left: 0;
     }
     .heart-box-btn::after {
       top: 0;
-      right: -55px;
+      right: -56px;
     }
     .heart-box-btn span {
       position: absolute;
@@ -333,11 +390,23 @@
       top: 24px;
       left: -8px;
       font-family: var(--font-script);
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: var(--deep-rose);
       text-align: center;
       line-height: 1.2;
+    }
+    .heart-box-btn:hover {
+      transform: rotate(-45deg) scale(1.08);
+      background: #f7cfdd;
+      box-shadow: 0 10px 26px rgba(163, 72, 99, 0.22);
+    }
+    .heart-box-btn:hover::before,
+    .heart-box-btn:hover::after {
+      background: #f7cfdd;
+    }
+    .heart-box-btn:active {
+      transform: rotate(-45deg) scale(0.95);
     }
 
     .never-read-box {
@@ -346,19 +415,30 @@
       border: 1.5px solid var(--pastel-blue-border);
       background: linear-gradient(135deg, #ffffff 0%, var(--pastel-blue-tint) 100%);
       padding: 1.2rem 1.4rem;
-      border-radius: 18px;
+      border-radius: 20px;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      box-shadow: 0 4px 15px rgba(205, 223, 240, 0.2);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .never-read-box:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(163, 72, 99, 0.14);
+      border-color: var(--primary-rose);
+    }
+    .never-read-box:active {
+      transform: scale(0.96);
     }
     .never-read-box span {
       font-family: var(--font-serif);
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 700;
       color: #3b5066;
     }
 
+    /* Ring Box Smooth Animation */
     .ring-section {
       margin: 2rem 0 1rem;
       width: 100%;
@@ -370,17 +450,35 @@
       width: 110px;
       height: 110px;
       background: #541224;
-      border-radius: 20px;
+      border-radius: 22px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       color: #fff;
+      box-shadow: 0 8px 24px rgba(84, 18, 36, 0.25);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .ring-box-container:hover {
+      transform: scale(1.06);
+      box-shadow: 0 12px 30px rgba(84, 18, 36, 0.35);
+    }
+    .ring-box-container:active {
+      transform: scale(0.95);
+    }
+    .ring-box-container.opened {
+      background: #7a1f39;
+      transform: translateY(-4px);
     }
     .ring-reveal-content {
       display: none;
-      margin-top: 1.5rem;
+      margin-top: 1.6rem;
+      animation: ringPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    @keyframes ringPop {
+      0% { opacity: 0; transform: scale(0.8) translateY(12px); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
     }
     .final-love-txt {
       font-family: var(--font-serif);
@@ -399,7 +497,7 @@
       text-align: center;
     }
 
-    /* Modals */
+    /* Modal System */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -407,39 +505,51 @@
       width: 100vw;
       height: 100vh;
       background: rgba(45, 36, 39, 0.45);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       display: none;
       align-items: center;
       justify-content: center;
       z-index: 300;
       padding: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
     .modal-overlay.active {
       display: flex;
+      opacity: 1;
     }
     .modal-card {
       background: white;
-      padding: 2rem 1.6rem;
-      border-radius: 24px;
+      padding: 2.2rem 1.8rem;
+      border-radius: 26px;
       max-width: 490px;
       width: 100%;
       max-height: 88vh;
       overflow-y: auto;
       text-align: center;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.16);
+      transform: scale(0.88) translateY(15px);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .modal-overlay.active .modal-card {
+      transform: scale(1) translateY(0);
     }
     .section-img {
       width: 100%;
       max-height: 320px;
       object-fit: contain;
-      border-radius: 14px;
+      border-radius: 16px;
       margin: 1.2rem 0;
       background: #faf6f8;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
       display: block;
     }
   </style>
 </head>
 <body>
 
-  <!-- Petals -->
+  <!-- Falling Flowers -->
   <div class="flower-container" id="flower-zone"></div>
 
   <!-- Error Toast -->
@@ -460,7 +570,7 @@
   <div class="screen" id="screen-welcome">
     <h1 class="welcome-title">Welcome to Anupama's small world</h1>
     <div class="author-credit">~Made by Ayushman</div>
-    <button class="btn-cute btn-green" onclick="showScreen('screen-intro')">Enter</button>
+    <button class="btn-cute btn-green" onclick="goToScreen('screen-intro')">Enter</button>
   </div>
 
   <!-- SCREEN 3: INTRO LETTER -->
@@ -472,7 +582,7 @@ Ig Something should be left for the next time too na 😛! But this is the only 
 Meet you again in the last !! And do read everything, as every single word is written by me myself expressing my purest feelings without any filter 🤭❤️!</div>
 
     <div>
-      <button class="btn-cute" onclick="showScreen('screen-main')">Okayy</button>
+      <button class="btn-cute" onclick="goToScreen('screen-main')">Okayy</button>
       <button class="btn-cute" onclick="openNoModal()">Ohh Noo</button>
     </div>
   </div>
@@ -528,13 +638,13 @@ Meet you again in the last !! And do read everything, as every single word is wr
 
     <!-- Ring Box Ending -->
     <div class="ring-section">
-      <div class="ring-box-container" onclick="toggleRingBox()">
+      <div class="ring-box-container" id="ring-box-btn" onclick="toggleRingBox()">
         <span style="font-size: 1.5rem;">♡</span>
         <span style="font-size: 0.85rem; font-weight: 700; letter-spacing: 1.5px; margin-top: 4px;">OPEN</span>
       </div>
       
       <div class="ring-reveal-content" id="ring-reveal">
-        <div style="font-size: 2.3rem;">💍✨</div>
+        <div style="font-size: 2.4rem;">💍✨</div>
         <div class="final-love-txt">I LOVEEEE YOUUU SOOO MUCHHH ANUPAMA❤️</div>
       </div>
     </div>
@@ -571,158 +681,4 @@ Meet you again in the last !! And do read everything, as every single word is wr
       <h2 id="content-title" style="text-align: center; margin-bottom: 0.8rem; font-size: 1.4rem;"></h2>
       
       <img id="content-img" class="section-img" src="" alt="Memory" />
-      <div id="content-body" style="font-size: 1rem; font-weight: 600; line-height: 1.9; color: #523b44; margin-top: 1rem; white-space: pre-line;"></div>
-      
-      <div style="text-align: center; margin-top: 1.6rem;">
-        <button class="btn-cute" onclick="closeModals()">Close ♡</button>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    /* Flower Petals */
-    function spawnFlower() {
-      const zone = document.getElementById('flower-zone');
-      const flowers = ['🌷', '🌻'];
-      const el = document.createElement('div');
-      el.className = 'flower';
-      el.innerText = flowers[Math.floor(Math.random() * flowers.length)];
-      el.style.left = Math.random() * 100 + 'vw';
-      el.style.animationDuration = (Math.random() * 3 + 4) + 's';
-      zone.appendChild(el);
-      setTimeout(() => el.remove(), 7000);
-    }
-    setInterval(spawnFlower, 1400);
-
-    /* Screen Control */
-    function showScreen(id) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-      window.scrollTo(0, 0);
-    }
-
-    /* Password Validation */
-    const passInput = document.getElementById('pass-input');
-    passInput.addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') {
-        validatePassword();
-      }
-    });
-
-    function validatePassword() {
-      const val = passInput.value.trim();
-      if (val === "2008") {
-        showScreen('screen-welcome');
-      } else {
-        const toast = document.getElementById('error-toast');
-        toast.style.display = 'block';
-        setTimeout(() => { toast.style.display = 'none'; }, 3000);
-        passInput.value = "";
-      }
-    }
-
-    function openNoModal() {
-      document.getElementById('no-modal').classList.add('active');
-    }
-
-    function resetToStart() {
-      closeModals();
-      passInput.value = "";
-      showScreen('screen-pass');
-    }
-
-    /* Timer */
-    function updateCounter() {
-      const startDate = new Date('2025-07-17T00:00:00');
-      const now = new Date();
-      
-      let years = now.getFullYear() - startDate.getFullYear();
-      let months = now.getMonth() - startDate.getMonth();
-      let days = now.getDate() - startDate.getDate();
-
-      if (days < 0) {
-        months--;
-        const prevMonthDays = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
-        days += prevMonthDays;
-      }
-      if (months < 0) {
-        years--;
-        months += 12;
-      }
-
-      document.getElementById('cnt-years').innerText = Math.max(0, years);
-      document.getElementById('cnt-months').innerText = Math.max(0, months);
-      document.getElementById('cnt-days').innerText = Math.max(0, days);
-    }
-    updateCounter();
-
-    let currentTarget = null;
-    const sectionData = {
-      iimun2025: { 
-        title: "IIMUN 2025", 
-        text: `How can I even forget this date - 17 July 2025, the date, I'll always be grateful to! The date , when the universe really thought to show me that fairies do exist in real life too!!
-
-I still remember the day , that afternoon when I saw you for the very first time wearing the yellow shiny kurti and red dupatta 🛌🏻! I never got the opportunity to tell you but that was the first time in 16 years , I literally fell for someone ,at first sight 🛐
-
-The way you asked us to answer questions to the chief guest, busyy being in a WhatsApp group call, sitting just in front of us & literally being the most tensed OC member. I literally wanted to talk to you that day but couldn't, so thought that I'ld surely talk the next day but I never got the confidence to match this unmatchable aura of someone!!
-
-I almost lost the hope that I would ever say you a HI , but I too don't know how in the last day i gathered some courage just to ask you to take a pictuee with me ( I too know that it was so random😹), maybe so that I could have adored that for the rest of my life because somehow my heart knew that it might be the first and the last time, we meeting together. I was literally the happiest after getting that photograph and literally thought of that only moment my whole way to home.
-
-Tbh , I literally lost all the hopes of meeting you again , was lil bit sad and never thought that would talk to you again ! 
-
-"But kehte hai na , agar tum kisi chizz ko puri shiddat se chaho , toh pure duniya usse tumse milane ki koshish mein jut jaati h"
-
-And Aditya did the same , idk what he told you , till date also idk what he even said but whatever he said , I'll be grateful to him somehow that we got to know eachother and that random Hi and photograph , now turned into this immortal bond mannnn!!!
-
-I'll always be grateful to IIMUN and that specific date to the universe.`, 
-        img: "section1.jpg"
-      },
-      iimun2026: { title: "IIMUN 2026", text: "", img: "" },
-      whylove: { title: "WHY I LOVE YOU", text: "", img: "" },
-      neverread: { title: "THINGS YOU MUST NEVER READ", text: "", img: "" }
-    };
-
-    function promptSection(key) {
-      currentTarget = key;
-      const titleEl = document.getElementById('confirm-title');
-      const subEl = document.getElementById('confirm-sub');
-
-      if (key === 'neverread') {
-        titleEl.innerText = "Are you sure you want to read 🙉";
-        subEl.innerText = "Read at your own risk 😝";
-      } else {
-        titleEl.innerText = "Are you sure?";
-        subEl.innerText = "";
-      }
-      document.getElementById('confirm-modal').classList.add('active');
-    }
-
-    function openContentModal() {
-      closeModals();
-      const data = sectionData[currentTarget];
-      document.getElementById('content-title').innerText = data.title;
-      document.getElementById('content-body').innerText = data.text;
-      
-      const img = document.getElementById('content-img');
-      if (data.img && data.img !== "") {
-        img.src = data.img;
-        img.style.display = 'block';
-      } else {
-        img.style.display = 'none';
-      }
-      
-      document.getElementById('content-modal').classList.add('active');
-    }
-
-    function closeModals() {
-      document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-    }
-
-    function toggleRingBox() {
-      const reveal = document.getElementById('ring-reveal');
-      reveal.style.display = (reveal.style.display === 'block') ? 'none' : 'block';
-    }
-  </script>
-</body>
-</html>
-
+      <div id="content-body" style="font-size: 1rem; font-weight: 6
