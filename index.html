@@ -23,7 +23,6 @@
       --text-main: #4a343d;
       --text-muted: #8c6e78;
       --text-light: #b08d98;
-      --accent-black: #2d2427;
 
       --font-body: 'Nunito', sans-serif;
       --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -78,7 +77,7 @@
       100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
     }
 
-    /* Screens */
+    /* Screens Management */
     .screen {
       display: none;
       width: 100%;
@@ -708,4 +707,193 @@ Meet you again in the last !! And do read everything, as every single word is wr
       <div id="gift-box-container" style="text-align:center; display:none;">
         <div class="gift-box-wrap" onclick="revealPhoto()">
           <div class="gift-box">🎁</div>
-     
+          <span style="font-size:0.85rem; font-weight:600; color:var(--text-muted);">Tap the gift to reveal</span>
+        </div>
+      </div>
+
+      <img id="content-img" class="section-img" src="" alt="Memory" style="display:none;" />
+      <div id="content-body" style="font-size: 1rem; font-weight: 600; line-height: 1.9; color: #523b44; margin-top: 1rem; white-space: pre-line;"></div>
+      
+      <div style="text-align: center; margin-top: 1.6rem;">
+        <button class="btn-cute" onclick="closeModals()">Close ♡</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function spawnFlower() {
+      const zone = document.getElementById('flower-zone');
+      const flowers = ['🌷', '🌻'];
+      const el = document.createElement('div');
+      el.className = 'flower';
+      el.innerText = flowers[Math.floor(Math.random() * flowers.length)];
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      zone.appendChild(el);
+      setTimeout(() => el.remove(), 7000);
+    }
+    setInterval(spawnFlower, 1400);
+
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      window.scrollTo(0, 0);
+    }
+
+    const inputs = document.querySelectorAll('.otp-digit');
+    inputs.forEach((input, index) => {
+      input.addEventListener('input', (e) => {
+        if (e.target.value.length === 1 && index < inputs.length - 1) {
+          inputs[index + 1].focus();
+        }
+        checkPassword();
+      });
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && !input.value && index > 0) {
+          inputs[index - 1].focus();
+        }
+      });
+    });
+
+    function checkPassword() {
+      let code = "";
+      inputs.forEach(i => code += i.value);
+      if (code.length === 4) {
+        if (code === "2008") {
+          setTimeout(() => showScreen('screen-welcome'), 200);
+        } else {
+          showToast();
+          inputs.forEach(i => i.value = "");
+          inputs[0].focus();
+        }
+      }
+    }
+
+    function showToast() {
+      const toast = document.getElementById('error-toast');
+      toast.classList.add('visible');
+      setTimeout(() => toast.classList.remove('visible'), 3200);
+    }
+
+    document.getElementById('btn-to-intro').onclick = () => showScreen('screen-intro');
+    document.getElementById('btn-intro-okay').onclick = () => showScreen('screen-main');
+    document.getElementById('btn-intro-no').onclick = () => {
+      document.getElementById('no-modal').classList.add('active');
+    };
+
+    function resetToStart() {
+      closeModals();
+      inputs.forEach(i => i.value = "");
+      showScreen('screen-pass');
+    }
+
+    function updateCounter() {
+      const startDate = new Date('2025-07-17T00:00:00');
+      const now = new Date();
+      
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+
+      if (days < 0) {
+        months--;
+        const prevMonthDays = new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+        days += prevMonthDays;
+      }
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      document.getElementById('cnt-years').innerText = Math.max(0, years);
+      document.getElementById('cnt-months').innerText = Math.max(0, months);
+      document.getElementById('cnt-days').innerText = Math.max(0, days);
+    }
+    updateCounter();
+
+    let currentTarget = null;
+    const sectionData = {
+      iimun2025: { 
+        title: "IIMUN 2025", 
+        text: `How can I even forget this date - 17 July 2025, the date, I'll always be grateful to! The date , when the universe really thought to show me that fairies do exist in real life too!!
+
+I still remember the day , that afternoon when I saw you for the very first time wearing the yellow shiny kurti and red dupatta 🛌🏻! I never got the opportunity to tell you but that was the first time in 16 years , I literally fell for someone ,at first sight 🛐
+
+The way you asked us to answer questions to the chief guest, busyy being in a WhatsApp group call, sitting just in front of us & literally being the most tensed OC member. I literally wanted to talk to you that day but couldn't, so thought that I'ld surely talk the next day but I never got the confidence to match this unmatchable aura of someone!!
+
+I almost lost the hope that I would ever say you a HI , but I too don't know how in the last day i gathered some courage just to ask you to take a pictuee with me ( I too know that it was so random😹), maybe so that I could have adored that for the rest of my life because somehow my heart knew that it might be the first and the last time, we meeting together. I was literally the happiest after getting that photograph and literally thought of that only moment my whole way to home.
+
+Tbh , I literally lost all the hopes of meeting you again , was lil bit sad and never thought that would talk to you again ! 
+
+"But kehte hai na , agar tum kisi chizz ko puri shiddat se chaho , toh pure duniya usse tumse milane ki koshish mein jut jaati h"
+
+And Aditya did the same , idk what he told you , till date also idk what he even said but whatever he said , I'll be grateful to him somehow that we got to know eachother and that random Hi and photograph , now turned into this immortal bond mannnn!!!
+
+I'll always be grateful to IIMUN and that specific date to the universe.`, 
+        img: "section1.jpg", 
+        hasGift: false 
+      },
+      iimun2026: { title: "IIMUN 2026", text: "", img: "", hasGift: false },
+      whylove: { title: "WHY I LOVE YOU", text: "", img: "", hasGift: false },
+      neverread: { title: "THINGS YOU MUST NEVER READ", text: "", img: "", hasGift: true }
+    };
+
+    function promptSection(key) {
+      currentTarget = key;
+      const titleEl = document.getElementById('confirm-title');
+      const subEl = document.getElementById('confirm-sub');
+
+      if (key === 'neverread') {
+        titleEl.innerText = "Are you sure you want to read 🙉";
+        subEl.innerText = "Read at your own risk 😝";
+      } else {
+        titleEl.innerText = "Are you sure?";
+        subEl.innerText = "";
+      }
+      document.getElementById('confirm-modal').classList.add('active');
+    }
+
+    document.getElementById('confirm-yes').onclick = () => {
+      closeModals();
+      const data = sectionData[currentTarget];
+      document.getElementById('content-title').innerText = data.title;
+      document.getElementById('content-body').innerText = data.text;
+      
+      const img = document.getElementById('content-img');
+      const gift = document.getElementById('gift-box-container');
+      
+      if (data.img && data.img !== "") {
+        img.src = data.img;
+        if (data.hasGift) {
+          gift.style.display = 'block';
+          img.style.display = 'none';
+        } else {
+          gift.style.display = 'none';
+          img.style.display = 'block';
+        }
+      } else {
+        gift.style.display = 'none';
+        img.style.display = 'none';
+      }
+      
+      document.getElementById('content-modal').classList.add('active');
+    };
+
+    function revealPhoto() {
+      document.getElementById('gift-box-container').style.display = 'none';
+      document.getElementById('content-img').style.display = 'block';
+    }
+
+    function closeModals() {
+      document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
+    }
+
+    function toggleRingBox() {
+      const box = document.getElementById('ring-box');
+      const reveal = document.getElementById('ring-reveal');
+      box.classList.toggle('opened');
+      reveal.style.display = box.classList.contains('opened') ? 'block' : 'none';
+    }
+  </script>
+</body>
+</html>
